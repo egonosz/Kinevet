@@ -31,6 +31,8 @@ public class KFrame extends JFrame {
 	{
 		this.kontroller=kontroller;
 		menüBar.setKontroller(kontroller.getMenüKontroller());
+		sPanel.setDobóKockaKontroller(kontroller);
+		tábla.setKontroller(kontroller);
 	}
 	public StatuszPanel getStatusPanel()
 	{

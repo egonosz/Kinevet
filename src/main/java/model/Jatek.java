@@ -6,11 +6,12 @@ import java.util.List;
 public class Jatek {
 private List<Jatekos> játékosok;
 private int játékosKöre;
-
+private int utolsóGurítás;
 public Jatek()
 {
 	játékosok=new ArrayList<Jatekos>(4);
-	játékosKöre=new Integer(0);
+	játékosKöre=0;
+	setUtolsóGurítás(0);
 }
 
 public List<Jatekos> getJatekosok() 
@@ -35,6 +36,14 @@ public int getJátékosKöre()
 public void setJátékosKöre(int játékosKöre) 
 {
 	this.játékosKöre = játékosKöre;
+}
+
+public int getUtolsóGurítás() {
+	return utolsóGurítás;
+}
+
+public void setUtolsóGurítás(int utolsóGurítás) {
+	this.utolsóGurítás = utolsóGurítás;
 }
 
 }

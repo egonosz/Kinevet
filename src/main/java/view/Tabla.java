@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +15,8 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import controller.Kontroller;
+import model.Babu;
 import model.Jatekos;
 
 @SuppressWarnings("serial")
@@ -24,6 +29,12 @@ public class Tabla extends JPanel {
 	private static final Color ZÖLD_MEZŐ = new Color(0, 110, 0);
 	private static final Color KÉK_MEZŐ = new Color(0, 0, 110);
 	private static final Color FEKETE_MEZŐ = new Color(90, 90, 90);
+	
+	private static final Color PIROS_BÁBU = new Color(200, 0, 0);
+	private static final Color ZÖLD_BÁBU = new Color(0, 200, 0);
+	private static final Color KÉK_BÁBU = new Color(0, 0, 200);
+	private static final Color FEKETE_BÁBU = new Color(180, 180, 180);
+	
 	private static final Color SZÜRKE_MEZŐ = new Color(150,150,150);
 	private static final int MEZŐ_ÁTLÓ = 26; // legyen páros
 
@@ -31,38 +42,103 @@ public class Tabla extends JPanel {
 	private Map<Integer, Vector<Pozicio>> bázisMezőPozíciók;
 	private Map<Integer, Vector<Pozicio>> győzelmiMezőPozíciók;
 	private Map<Integer, Color> kontrollMezőSzínek;
+	private List<VBabu> bábuPozíciók;
 	private boolean isAktív;
-
+    private Kontroller kontroller;
 	Tabla() {
 		super();
 		this.setBackground(HÁTTÉR_SZÍN);
-		this.isAktív = true;
+		this.isAktív = false;
 		this.setSize(442, 442);
+		bábuPozíciók=new ArrayList<VBabu>(16);
+		
 		mezőPozíciókInicializálása();
 		győzelmiMezőPozíciókInicializálása();
 		bázisPozíciókInicializálása();
 		kontrollMezőSzínekInicializálás();
+		setMouseListener();
 	}
 
-	public void kezdőHelyFrissítés(List<Jatekos> Jatekosok)
+	public void setKontroller(Kontroller kontroller)
+	{
+		this.kontroller=kontroller;
+	}
+	public void setMouseListener()
+	{
+		  this.addMouseListener(new MouseAdapter() {
+              private Color background;
+
+              @Override
+              public void mousePressed(MouseEvent e) {
+                  if(isAktív)
+                  {
+                	  List<Jatekos> játékosok=kontroller.getJátékosok();
+                	  for(Jatekos j: játékosok)
+                	  {
+                		  if(kontroller.getAktívJátékos()==j.getId()){
+                		  Vector<Babu> babuk=j.getBábuk();
+                			 for(Babu b: babuk){
+                			  if(b.getPozíció()!=-1){
+                				if(tavolsag(bábuToPozíció(b),new Pozicio(e.getX(),e.getY()))<MEZŐ_ÁTLÓ)
+                					  {
+                				  		kontroller.Lépés(j,b);
+                				  		return;
+                					  }
+                			 }
+                			  else {
+                				  
+                				for(Pozicio ba :bázisMezőPozíciók.get(j.getKezdőHely().getKezdőPozíció()))
+                				  if(tavolsag( ba,new Pozicio(e.getX(),e.getY()))<2*MEZŐ_ÁTLÓ)
+                				  {
+                					  System.out.println("Shit");
+                					  kontroller.Lépés(j,b);
+                					  return;
+                				  }
+                			  }
+                		}
+                		  }
+                  }
+                }}
+
+              @Override
+              public void mouseReleased(MouseEvent e) {
+                  setBackground(background);
+              }
+          });
+	}
+	
+	public void setAktív(boolean b) {
+		isAktív=true;
+		
+	}
+	
+	public void setTáblaAKezdőállapotba(List<Jatekos> Jatekosok)
 	{
 		kontrollMezőSzínek.clear();
-		
 		for(Jatekos a:Jatekosok)
 		{
 		Color c= new Color(0,0,0);
 		switch(a.getSzín())
 		{
-		case PIROS:c=PIROS_MEZŐ;
-		break;
-		case ZÖLD:c=ZÖLD_MEZŐ;
-		break;
-		case KÉK:c=KÉK_MEZŐ;
-		break;
-		case FEKETE:c=FEKETE_MEZŐ;
+		case PIROS:
+				c=PIROS_MEZŐ;
 			
+		break;
+		case ZÖLD:
+				c=ZÖLD_MEZŐ;
+				
+		break;
+		case KÉK:
+				c=KÉK_MEZŐ;
+				
+		break;
+		case FEKETE:
+				c=FEKETE_MEZŐ;
+				
 		}
 		kontrollMezőSzínek.put(a.getKezdőHely().getKezdőPozíció(),c);
+		
+	
 		}
 		for(int i=0;i<4;i++)
 		{
@@ -72,8 +148,59 @@ public class Tabla extends JPanel {
 			}
 		}
 		
+		bábukFrissítése(Jatekosok);
+		
+		
 	}
+	private int tavolsag(Pozicio x,Pozicio y)
+	{
+		return (int)Math.sqrt(Math.abs((x.x-y.x)*(x.x-y.x)+(x.y-y.y)*(x.y-y.y)));
+	}
+	private Pozicio  bábuToPozíció(Babu b)
+	{
+		Pozicio p=new Pozicio();
+		if(b.getPozíció()!=-1){
+		p=mezőPozíciók.get(b.getPozíció());
+		}
+		return p;
+	}
+	public void bábukFrissítése(List<Jatekos> jatekosok)
+	{
+		bábuPozíciók.clear();
 
+		for(Jatekos a:jatekosok)
+		{
+		Color c= new Color(0,0,0);
+		switch(a.getSzín())
+		{
+		case PIROS:
+				c=PIROS_BÁBU;
+		break;
+		case ZÖLD:
+				c=ZÖLD_BÁBU;
+		break;
+		case KÉK:
+				c=KÉK_BÁBU;
+		break;
+		case FEKETE:
+				c=FEKETE_BÁBU;
+		}
+		
+		/*Ez teszi a megfelelő helyre a bábut*/
+		for(int i=0;i<4;i++){
+			if(a.getBábuk().get(i).getPozíció()==-1){
+			bábuPozíciók.add(new VBabu(c ,bázisMezőPozíciók.get(a.getKezdőHely().getKezdőPozíció()).get(i),a.getId()));
+			}
+			else if(a.getBábuk().get(i).getPozíció()<40)
+			{
+				bábuPozíciók.add(new VBabu(c ,mezőPozíciók.get(a.getBábuk().get(i).getPozíció()),a.getId()));
+			}
+		}
+		
+		}
+	}
+	
+	
 	private void kontrollMezőSzínekInicializálás() {
 		kontrollMezőSzínek = new HashMap<Integer, Color>();
 		kontrollMezőSzínek.put(0, new Color(PIROS_MEZŐ.getRGB()));
@@ -221,5 +348,19 @@ public class Tabla extends JPanel {
 
 		}
 
+	
+		for(VBabu b:bábuPozíciók)
+		{
+			g.setPaint(b.getSzín());
+			g.setStroke(new BasicStroke(1));
+			Pozicio pb=new Pozicio(b.getPozíció().x,b.getPozíció().y);
+			g.fillOval(pb.x-((MEZŐ_ÁTLÓ/2)/10)*8,pb.y-((MEZŐ_ÁTLÓ/2)/10)*8,((MEZŐ_ÁTLÓ/2)/5)*8,((MEZŐ_ÁTLÓ/2)/5)*8);
+			g.setPaint(VONAL_SZÍN);
+			g.drawOval(pb.x-((MEZŐ_ÁTLÓ/2)/10)*8,pb.y-((MEZŐ_ÁTLÓ/2)/10)*8,((MEZŐ_ÁTLÓ/2)/5)*8,((MEZŐ_ÁTLÓ/2)/5)*8);
+			g.setPaint(new Color((int)b.getSzín().getRed()+50,(int)b.getSzín().getGreen()+50,(int)b.getSzín().getBlue()+50));
+			g.fillOval(pb.x-((MEZŐ_ÁTLÓ/2)/10)*5,pb.y-((MEZŐ_ÁTLÓ/2)/10)*5,((MEZŐ_ÁTLÓ/2)/5)*5,((MEZŐ_ÁTLÓ/2)/5)*5);
+		}
 	}
+
+	
 }

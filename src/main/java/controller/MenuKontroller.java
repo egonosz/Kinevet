@@ -18,7 +18,6 @@ public class MenuKontroller {
 	
 	public void kilépés()
 	{
-		System.out.print("shit");
 		System.exit(0);
 		
 	}

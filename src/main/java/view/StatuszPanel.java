@@ -4,32 +4,36 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
+import controller.Kontroller;
 import model.Jatekos;
 
 @SuppressWarnings("serial")
 public class StatuszPanel extends JPanel {
 
-	private List<JLabel> játékosNévCímkék;
+	
+	private List<JátékosLabel> játékosNévCímkék;
 	private JButton dobóKocka;
-
 	StatuszPanel() {
 		super();
 		this.setPreferredSize(new Dimension(442, 35));
 		dobóKocka = new JButton("Kocka");
 		dobóKocka.setEnabled(false);
 		this.add(dobóKocka);
-		játékosNévCímkék = new ArrayList<JLabel>(4);
+		játékosNévCímkék = new ArrayList<JátékosLabel>(4);
 		for (int i = 1; i < 5; i++) {
-			JLabel l = new JLabel("Player" + i);
+			JátékosLabel l = new JátékosLabel("Player" + i);
 
 			l.setAlignmentX(Component.CENTER_ALIGNMENT);
 			l.setHorizontalAlignment(SwingConstants.CENTER);
@@ -37,37 +41,40 @@ public class StatuszPanel extends JPanel {
 		}
 
 	}
-
-	private void SetJátékosNévCímkék(List<Jatekos> játékosok) {
-		for (int i = 0; i < játékosok.size(); i++) {
-			for (Jatekos a : játékosok) {
-				if (a.getKezdőHely().getKezdőPozíció() == (i * 10)) {
-
-					játékosNévCímkék.get(i).setText(new String(a.getNév()));
-					játékosNévCímkék.get(i).setVisible(true);
-					switch (a.getSzín()) {
-					case PIROS:
-						játékosNévCímkék.get(i).setForeground(
-								new Color(255, 0, 0));
-						break;
-					case ZÖLD:
-						játékosNévCímkék.get(i).setForeground(
-								new Color(0, 255, 0));
-						break;
-					case KÉK:
-						játékosNévCímkék.get(i).setForeground(
-								new Color(0, 0, 255));
-						break;
-					case FEKETE:
-						játékosNévCímkék.get(i).setForeground(
-								new Color(0, 0, 0));
-						break;
-					}
-				}
+	public void setDobóKockaKontroller(Kontroller kontroller)
+	{
+		dobóKocka.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				kontroller.Dobás();
+			}
+			});
+	}
+	
+	public void setDobóKockaSzöveg(String x)
+	{
+		dobóKocka.setText(x);
+	}
+	public void setKockaAktív(boolean b)
+	{
+		dobóKocka.setEnabled(b);
+		validate();
+	}
+	public void setAktívJátékosCímke(int id)
+	{
+		for(JátékosLabel l :játékosNévCímkék)
+		{
+			if(l.getJátékosId()==id)
+			{
+				Border b=BorderFactory.createLineBorder(l.getForeground(),1);
+				l.setBorder(b);
+			}
+			else 
+			{
+				l.setBorder(new EmptyBorder(0,0,0,0));
 			}
 		}
-		játékosNévCímkék.get(0).setBorder(BorderFactory.createLineBorder(játékosNévCímkék.get(0).getForeground()));
- 
+	validate();
 	}
 
 	public void beállítás(List<Jatekos> játékosok) {
@@ -85,7 +92,6 @@ public class StatuszPanel extends JPanel {
 		}
 
 		this.add(dobóKocka);
-		dobóKocka.setEnabled(true);
 		if (játékosok.size() == 2) {
 			this.add(játékosNévCímkék.get(1));
 		} else {
@@ -98,6 +104,32 @@ public class StatuszPanel extends JPanel {
 		}
 
 		this.validate();
+	}
+
+	private void SetJátékosNévCímkék(List<Jatekos> játékosok) {
+		for (int i = 0; i < játékosok.size(); i++) {
+			Jatekos x = játékosok.get(i);
+		
+			játékosNévCímkék.get(i).setText(new String(x.getNév()));
+			játékosNévCímkék.get(i).setVisible(true);
+			játékosNévCímkék.get(i).setJátékosId(x.getId());
+			switch (x.getSzín()) {
+			case PIROS:
+				játékosNévCímkék.get(i).setForeground(new Color(255, 0, 0));
+				break;
+			case ZÖLD:
+				játékosNévCímkék.get(i).setForeground(new Color(0, 255, 0));
+				break;
+			case KÉK:
+				játékosNévCímkék.get(i).setForeground(new Color(0, 0, 255));
+				break;
+			case FEKETE:
+				játékosNévCímkék.get(i).setForeground(new Color(0, 0, 0));
+				break;
+			}
+
+		}
+
 	}
 
 }

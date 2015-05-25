@@ -1,23 +1,39 @@
 package model;
 
+import java.util.Vector;
+
 public final class Jatekos {
-private Babu[] bábuk;
+private Vector<Babu> bábuk;
 private Szin szín;
 private Kezdohely kezdőHely;
 private String név;
-
-public Jatekos(Kezdohely kezdőHely, Szin szín,String név) {
+private int id;
+public Jatekos(Kezdohely kezdőHely, Szin szín,String név,int id) {
 	super();
 	this.kezdőHely = kezdőHely;
 	this.szín = szín;
 	this.név =név;
-	this.bábuk= new Babu[4];
+	this.id=id;
+	this.bábuk= new Vector<Babu>(4);
+	for(int i=0;i<4; i++) bábuk.addElement(new Babu());
 }
-public Babu[] getBábuk() {
+
+
+public int getId() {
+	return id;
+}
+
+
+public void setId(int id) {
+	this.id = id;
+}
+
+
+public Vector<Babu> getBábuk() {
 	return bábuk;
 }
 
-public void setBábuk(Babu[] bábuk) {
+public void setBábuk(Vector<Babu> bábuk) {
 	this.bábuk = bábuk;
 }
 
