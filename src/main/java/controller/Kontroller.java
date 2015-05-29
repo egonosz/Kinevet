@@ -265,7 +265,7 @@ public class Kontroller {
 	 * 
 	 * @param j
 	 *            a játékos
-	 * @param bP
+	 * @param b
 	 *            a bábu pozíciója
 	 * @return
 	 */
