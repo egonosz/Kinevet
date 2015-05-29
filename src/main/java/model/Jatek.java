@@ -1,3 +1,6 @@
+
+package model;
+
 /**
  * Az összes játékost, az utolsó gurítás eredmményét tárolja, továbbá, hogy mely játékos van soron.
  *
@@ -7,7 +10,6 @@
  */
 
 
-package model;
 
 import java.util.ArrayList;
 import java.util.List;

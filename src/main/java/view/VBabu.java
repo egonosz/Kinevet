@@ -1,3 +1,5 @@
+package view;
+
 /**
  * A model beli Bábu képernyőn való elhelyezkedésének tárolására való osztály.
  *
@@ -6,9 +8,6 @@
  * @since   2015-05-25 
  */
 
-
-
-package view;
 
 import java.awt.Color;
 

@@ -1,3 +1,8 @@
+
+
+
+package view;
+
 /**
  * A menüsávért felelős osztály.
  *
@@ -5,9 +10,6 @@
  * @version 1.0
  * @since   2015-05-25 
  */
-
-
-package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,3 +1,7 @@
+
+
+package model;
+
 /**
  * A játtékosok információit tárolja. Szín,bábuk helyzete, kezdőhely, név.
  *
@@ -6,8 +10,6 @@
  * @since   2015-05-25 
  */
 
-
-package model;
 
 import java.util.Vector;
 

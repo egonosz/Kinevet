@@ -1,3 +1,7 @@
+
+
+package view;
+
 /**
  * Az Megjelentítő fő osztálya. A megjelenítő többi része csak innen érhető el.
  *
@@ -5,8 +9,6 @@
  * @version 1.0
  * @since   2015-05-25 
  */
-
-package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;

@@ -1,3 +1,6 @@
+
+package controller;
+
 /**
  * A játék alkalmazás logikáját tartalmazza. A kontroller tartalmazza a játék szabályokat.
  *
@@ -6,7 +9,6 @@
  * @since   2015-05-25 
  */
 
-package controller;
 
 import java.awt.event.MouseAdapter;
 import java.io.UnsupportedEncodingException;

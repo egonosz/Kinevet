@@ -1,3 +1,7 @@
+
+
+package model;
+
 /**
  * Játékosok szineinek tartalmazó enum.
  *
@@ -5,8 +9,6 @@
  * @version 1.0
  * @since   2015-05-25 
  */
-
-package model;
 
 public enum Szin {
 PIROS,

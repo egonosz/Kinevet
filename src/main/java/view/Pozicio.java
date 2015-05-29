@@ -1,3 +1,4 @@
+package view;
 /**
  * 2D-s Pozíciókat tároló osztály.
  *
@@ -6,9 +7,6 @@
  * @since   2015-05-25 
  */
 
-
-
-package view;
 
 import model.BabuPozicio;
 

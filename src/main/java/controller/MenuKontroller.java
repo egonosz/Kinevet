@@ -1,3 +1,7 @@
+
+
+package controller;
+
 /**
  * A menü megjelenítővel való kommunikáció a feladata.
  *
@@ -6,8 +10,6 @@
  * @since   2015-05-25 
  */
 
-
-package controller;
 
 import java.util.List;
 

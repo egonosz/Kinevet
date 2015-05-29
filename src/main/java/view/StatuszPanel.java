@@ -1,3 +1,6 @@
+
+package view;
+
 /**
  * A dobókocka gomb kirajzolásáért és a játékos nevek megjelenítéséért felelős osztály.
  *
@@ -5,9 +8,6 @@
  * @version 1.0
  * @since   2015-05-25 
  */
-
-
-package view;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -32,7 +32,7 @@ import model.Jatekos;
 public class StatuszPanel extends JPanel {
 
 	
-	private List<JátékosLabel> játékosNévCímkék;
+	private List<JatekosLabel> játékosNévCímkék;
 	private JButton dobóKocka;
 	StatuszPanel() {
 		super();
@@ -41,9 +41,9 @@ public class StatuszPanel extends JPanel {
 		dobóKocka = new JButton("Kocka");
 		dobóKocka.setEnabled(false);
 		this.add(dobóKocka);
-		játékosNévCímkék = new ArrayList<JátékosLabel>(4);
+		játékosNévCímkék = new ArrayList<JatekosLabel>(4);
 		for (int i = 1; i < 5; i++) {
-			JátékosLabel l = new JátékosLabel("Player" + i);
+			JatekosLabel l = new JatekosLabel("Player" + i);
 
 			l.setAlignmentX(Component.CENTER_ALIGNMENT);
 			l.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,7 +72,7 @@ public class StatuszPanel extends JPanel {
 	}
 	public void setAktívJátékosCímke(int id)
 	{
-		for(JátékosLabel l :játékosNévCímkék)
+		for(JatekosLabel l :játékosNévCímkék)
 		{
 			if(l.getJátékosId()==id)
 			{

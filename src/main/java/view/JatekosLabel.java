@@ -1,3 +1,5 @@
+package view;
+
 /**
  * Játékos nevét tartalmazó JLabel.
  *
@@ -5,10 +7,6 @@
  * @version 1.0
  * @since   2015-05-25 
  */
-
-
-
-package view;
 
 import javax.swing.JLabel;
 
