@@ -45,7 +45,7 @@
 	</dependencies>
 	
 	<reporting>
-    <outputEncoding>UTF-8</outputEncoding>		
+
     <plugins>
 		
 			<plugin>
