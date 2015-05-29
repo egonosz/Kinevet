@@ -2,14 +2,6 @@
 
 package view;
 
-/**
- * Az Megjelentítő fő osztálya. A megjelenítő többi része csak innen érhető el.
- *
- * @author  Takác Ján
- * @version 1.0
- * @since   2015-05-25 
- */
-
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.HeadlessException;
@@ -19,6 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import controller.Kontroller;
+
+/**
+ * Az Megjelentítő fő osztálya. A megjelenítő többi része csak innen érhető el.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ **/
 
 @SuppressWarnings("serial")
 public class KFrame extends JFrame {

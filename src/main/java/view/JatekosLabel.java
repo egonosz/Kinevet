@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JLabel;
+
 /**
  * Játékos nevét tartalmazó JLabel.
  *
@@ -7,8 +9,6 @@ package view;
  * @version 1.0
  * @since   2015-05-25 
  */
-
-import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class JatekosLabel extends JLabel {

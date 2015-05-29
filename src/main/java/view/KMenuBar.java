@@ -3,14 +3,6 @@
 
 package view;
 
-/**
- * A menüsávért felelős osztály.
- *
- * @author  Takác Ján
- * @version 1.0
- * @since   2015-05-25 
- */
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -22,6 +14,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import controller.MenuKontroller;
+
+/**
+ * A menüsávért felelős osztály.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
 
 @SuppressWarnings("serial")
 public class KMenuBar extends JMenuBar {

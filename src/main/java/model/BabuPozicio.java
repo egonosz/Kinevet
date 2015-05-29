@@ -1,3 +1,6 @@
+
+package model;
+
 /**
  * A bábuk pozícióját tárolja és az állaptotot.
  *
@@ -6,8 +9,6 @@
  * @since   2015-05-25 
  */
 
-
-package model;
 
 public class BabuPozicio {
 

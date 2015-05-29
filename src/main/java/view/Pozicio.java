@@ -1,4 +1,7 @@
 package view;
+
+import model.BabuPozicio;
+
 /**
  * 2D-s Pozíciókat tároló osztály.
  *
@@ -8,7 +11,6 @@ package view;
  */
 
 
-import model.BabuPozicio;
 
 public class Pozicio {
 

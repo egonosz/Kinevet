@@ -1,6 +1,9 @@
 
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Az összes játékost, az utolsó gurítás eredmményét tárolja, továbbá, hogy mely játékos van soron.
  *
@@ -8,11 +11,6 @@ package model;
  * @version 1.0
  * @since   2015-05-25 
  */
-
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Jatek {
 private List<Jatekos> játékosok;

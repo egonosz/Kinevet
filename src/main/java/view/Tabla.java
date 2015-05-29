@@ -1,13 +1,5 @@
 package view;
 
-/**
- * A táblát rajzolja ki melyen folyik a és az inputról tájékoztatja a kontrollert.
- *
- * @author  Takác Ján
- * @version 1.0
- * @since   2015-05-25 
- */
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,6 +21,15 @@ import controller.Kontroller;
 import model.Allapot;
 import model.BabuPozicio;
 import model.Jatekos;
+
+/**
+ * A táblát rajzolja ki melyen folyik a és az inputról tájékoztatja a kontrollert.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
 
 @SuppressWarnings("serial")
 public class Tabla extends JPanel {

@@ -2,6 +2,8 @@
 
 package controller;
 
+import java.util.List;
+
 /**
  * A menü megjelenítővel való kommunikáció a feladata.
  *
@@ -10,8 +12,6 @@ package controller;
  * @since   2015-05-25 
  */
 
-
-import java.util.List;
 
 public class MenuKontroller {
 	

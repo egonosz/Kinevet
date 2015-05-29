@@ -1,14 +1,6 @@
 
 package view;
 
-/**
- * A dobókocka gomb kirajzolásáért és a játékos nevek megjelenítéséért felelős osztály.
- *
- * @author  Takác Ján
- * @version 1.0
- * @since   2015-05-25 
- */
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -27,6 +19,14 @@ import javax.swing.border.EmptyBorder;
 
 import controller.Kontroller;
 import model.Jatekos;
+
+/**
+ * A dobókocka gomb kirajzolásáért és a játékos nevek megjelenítéséért felelős osztály.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
 
 @SuppressWarnings("serial")
 public class StatuszPanel extends JPanel {

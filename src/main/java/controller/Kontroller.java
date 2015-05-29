@@ -1,14 +1,6 @@
 
 package controller;
 
-/**
- * A játék alkalmazás logikáját tartalmazza. A kontroller tartalmazza a játék szabályokat.
- *
- * @author  Takác Ján
- * @version 1.0
- * @since   2015-05-25 
- */
-
 
 import java.awt.event.MouseAdapter;
 import java.io.UnsupportedEncodingException;
@@ -31,6 +23,15 @@ import model.Kezdohely;
 import model.Szin;
 import model.Jatek;
 import view.KFrame;
+
+/**
+ * A játék alkalmazás logikáját tartalmazza. A kontroller tartalmazza a játék szabályokat.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
 
 public class Kontroller {
 	private KFrame frame;

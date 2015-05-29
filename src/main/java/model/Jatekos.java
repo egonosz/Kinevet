@@ -1,6 +1,8 @@
 
 
 package model;
+import java.util.Vector;
+
 
 /**
  * A játtékosok információit tárolja. Szín,bábuk helyzete, kezdőhely, név.
@@ -10,8 +12,6 @@ package model;
  * @since   2015-05-25 
  */
 
-
-import java.util.Vector;
 
 public final class Jatekos {
 private Vector<BabuPozicio> bábuk;

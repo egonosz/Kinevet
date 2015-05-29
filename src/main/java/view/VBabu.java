@@ -1,5 +1,8 @@
 package view;
 
+
+import java.awt.Color;
+
 /**
  * A model beli Bábu képernyőn való elhelyezkedésének tárolására való osztály.
  *
@@ -8,8 +11,6 @@ package view;
  * @since   2015-05-25 
  */
 
-
-import java.awt.Color;
 
 public class VBabu {
 private Color szín;
