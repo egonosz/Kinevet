@@ -1,3 +1,12 @@
+/**
+ * A menüsávért felelős osztály.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
+
 package view;
 
 import java.awt.event.ActionEvent;

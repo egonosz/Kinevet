@@ -1,3 +1,12 @@
+/**
+ * A dobókocka gomb kirajzolásáért és a játékos nevek megjelenítéséért felelős osztály.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
+
 package view;
 
 import java.awt.Color;
@@ -28,6 +37,7 @@ public class StatuszPanel extends JPanel {
 	StatuszPanel() {
 		super();
 		this.setPreferredSize(new Dimension(442, 35));
+		this.setBackground(new Color(219, 194, 94));
 		dobóKocka = new JButton("Kocka");
 		dobóKocka.setEnabled(false);
 		this.add(dobóKocka);
@@ -46,7 +56,7 @@ public class StatuszPanel extends JPanel {
 		dobóKocka.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				kontroller.Dobás();
+				kontroller.kockaDobás();
 			}
 			});
 	}
@@ -66,7 +76,7 @@ public class StatuszPanel extends JPanel {
 		{
 			if(l.getJátékosId()==id)
 			{
-				Border b=BorderFactory.createLineBorder(l.getForeground(),1);
+				Border b=BorderFactory.createLineBorder(l.getForeground(),3);
 				l.setBorder(b);
 			}
 			else 

@@ -1,3 +1,12 @@
+/**
+ * Az összes játékost, az utolsó gurítás eredmményét tárolja, továbbá, hogy mely játékos van soron.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
+
 package model;
 
 import java.util.ArrayList;

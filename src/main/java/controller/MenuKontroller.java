@@ -1,3 +1,12 @@
+/**
+ * A menü megjelenítővel való kommunikáció a feladata.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
+
 package controller;
 
 import java.util.List;

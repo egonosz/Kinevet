@@ -1,9 +1,18 @@
+/**
+ * A játtékosok információit tárolja. Szín,bábuk helyzete, kezdőhely, név.
+ *
+ * @author  Takác Ján
+ * @version 1.0
+ * @since   2015-05-25 
+ */
+
+
 package model;
 
 import java.util.Vector;
 
 public final class Jatekos {
-private Vector<Babu> bábuk;
+private Vector<BabuPozicio> bábuk;
 private Szin szín;
 private Kezdohely kezdőHely;
 private String név;
@@ -14,8 +23,8 @@ public Jatekos(Kezdohely kezdőHely, Szin szín,String név,int id) {
 	this.szín = szín;
 	this.név =név;
 	this.id=id;
-	this.bábuk= new Vector<Babu>(4);
-	for(int i=0;i<4; i++) bábuk.addElement(new Babu());
+	this.bábuk= new Vector<BabuPozicio>(4);
+	for(int i=0;i<4; i++) bábuk.addElement(new BabuPozicio());
 }
 
 
@@ -29,11 +38,11 @@ public void setId(int id) {
 }
 
 
-public Vector<Babu> getBábuk() {
+public Vector<BabuPozicio> getBábuk() {
 	return bábuk;
 }
 
-public void setBábuk(Vector<Babu> bábuk) {
+public void setBábuk(Vector<BabuPozicio> bábuk) {
 	this.bábuk = bábuk;
 }
 

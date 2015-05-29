@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.EventQueue;
+import java.io.UnsupportedEncodingException;
 
 import javax.swing.JFrame;
 
@@ -20,6 +21,7 @@ public class Kinevet {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					Kinevet window = new Kinevet();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -31,8 +33,10 @@ public class Kinevet {
 
 	/**
 	 * Create the application.
+	 * @throws UnsupportedEncodingException 
+	 * @throws SecurityException 
 	 */
-	public Kinevet() {
+	public Kinevet() throws SecurityException, UnsupportedEncodingException {
 		
 		
 		frame = new KFrame("Ki nevet a végén?");
@@ -40,6 +44,7 @@ public class Kinevet {
 		jatek= new Jatek();
 		kontroller=new Kontroller(frame,jatek);
 		
+	
 	}
 
 	
